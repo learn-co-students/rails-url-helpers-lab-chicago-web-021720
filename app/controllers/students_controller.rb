@@ -5,6 +5,15 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def edit 
+    if set_student.active
+      set_student.update(active: false)
+    else
+      set_student.update(active: true)
+    end 
+    redirect_to action: "show", id: set_student.id
+  end 
+
   def show
   end
 
